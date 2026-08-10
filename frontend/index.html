@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyTrack</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>StudyTrack</h1>
+    <p class="tagline">Trainee roster, sort &amp; search, and an AI study helper &mdash; one app.</p>
+    <nav class="site-nav">
+      <a href="#roster-list">Roster</a>
+      <a href="#tools-panel">Sort &amp; Search</a>
+      <a href="#ai-helper">AI Helper</a>
+    </nav>
+  </header>
+
+  <!-- A single shared banner for any failed request, anywhere on the page. -->
+  <div id="error-banner" class="error-banner" hidden></div>
+
+  <main>
+
+    <!-- ===================== Add student form ===================== -->
+    <section id="add-student" aria-labelledby="add-student-heading">
+      <h2 id="add-student-heading">Add a Student</h2>
+      <form id="student-form">
+        <label for="name-input">Name</label>
+        <input type="text" id="name-input" name="name" required />
+
+        <label for="email-input">Email</label>
+        <input type="email" id="email-input" name="email" required />
+
+        <label for="age-input">Age</label>
+        <input type="number" id="age-input" name="age" min="1" required />
+
+        <button type="submit">Add Student</button>
+      </form>
+    </section>
+
+    <!-- ===================== Roster ===================== -->
+    <section id="roster-list" aria-labelledby="roster-heading">
+      <h2 id="roster-heading">Student Roster</h2>
+      <div id="roster-cards" class="roster-grid">
+        <!-- Student cards are inserted here by app.js via document.createElement -->
+      </div>
+    </section>
+
+    <!-- ===================== Sort & Search & Report (Part 2) ===================== -->
+    <section id="tools-panel" aria-labelledby="tools-heading">
+      <h2 id="tools-heading">Sort, Search &amp; Report</h2>
+
+      <div class="tool-block">
+        <h3>Sort roster</h3>
+        <label for="sort-field">Sort by</label>
+        <select id="sort-field">
+          <option value="age">Age</option>
+          <option value="name">Name</option>
+        </select>
+        <button id="sort-btn" type="button">Sort</button>
+        <ol id="sort-results" class="plain-list"></ol>
+      </div>
+
+      <div class="tool-block">
+        <h3>Find a student by exact name</h3>
+        <input type="text" id="search-name-input" placeholder="e.g. Priya Iyer" />
+        <button id="search-name-btn" type="button">Search</button>
+        <p id="search-name-result"></p>
+      </div>
+
+      <div class="tool-block">
+        <h3>Roster report</h3>
+        <label for="report-min-age">Minimum age</label>
+        <input type="number" id="report-min-age" value="21" />
+        <button id="report-btn" type="button">Generate Report</button>
+        <pre id="report-output"></pre>
+      </div>
+    </section>
+
+    <!-- ===================== AI Helper (Part 3) ===================== -->
+    <section id="ai-helper" aria-labelledby="ai-helper-heading">
+      <h2 id="ai-helper-heading">AI Helper</h2>
+
+      <div class="tool-block">
+        <h3>Summarize study notes</h3>
+        <textarea id="notes-textarea" rows="6" placeholder="Paste your raw study notes here..."></textarea>
+        <button id="summarize-btn" type="button">Summarize</button>
+        <div id="summary-output" class="summary-output"></div>
+      </div>
+
+      <div class="tool-block">
+        <h3>Search related notes</h3>
+        <input type="text" id="notes-search-input" placeholder="e.g. binary search algorithm" />
+        <button id="notes-search-btn" type="button">Search Notes</button>
+        <ol id="notes-search-results" class="plain-list"></ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>StudyTrack &mdash; Myntra Trainee Enablement</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

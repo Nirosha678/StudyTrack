@@ -1,0 +1,276 @@
+
+
+:root {
+  --ink: #202a3c;
+  --paper: #f1f3ee;
+  --paper-card: #ffffff;
+  --accent: #3b6e63;
+  --accent-warm: #c97b3d;
+  --border: #cdd3c8;
+  --danger: #b3401f;
+  --danger-bg: #fbe9e3;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Georgia", "Source Serif 4", serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: "Iowan Old Style", "Georgia", serif;
+  letter-spacing: 0.01em;
+}
+
+
+.site-header {
+  padding: 2rem 1.5rem 1.5rem;
+  border-bottom: 3px solid var(--ink);
+  background: var(--paper-card);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.tagline {
+  margin: 0.25rem 0 1rem;
+  color: #55605a;
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  font-family: system-ui, sans-serif;
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 1.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  text-decoration: underline;
+}
+
+.site-footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: #6b756e;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+section h2 {
+  margin-top: 0;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------------
+   Error banner (shown/hidden by app.js)
+--------------------------------------------------------------------- */
+.error-banner {
+  font-family: system-ui, sans-serif;
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 0.85rem 1.25rem;
+  margin: 1rem 1.5rem 0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.error-banner[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Forms & inputs (shared by all sections)
+--------------------------------------------------------------------- */
+form label,
+.tool-block label {
+  display: block;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+input, select, textarea, button {
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+button {
+  margin-top: 0.85rem;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+  background: #2e564d;
+}
+
+button.delete-btn {
+  background: var(--danger);
+}
+
+button.delete-btn:hover,
+button.delete-btn:focus-visible {
+  background: #8f3116;
+}
+
+/* ---------------------------------------------------------------------
+   Roster grid + student cards
+   -- explicit padding / margin / border on both the container and each
+      card, as required, plus the 600px breakpoint below.
+--------------------------------------------------------------------- */
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--paper);
+}
+
+.student-card {
+  padding: 1rem;
+  margin: 0; /* grid gap already spaces cards; margin kept for box-model clarity */
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--paper-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.student-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.student-card .email {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: #55605a;
+  word-break: break-all;
+}
+
+.student-card .age-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.student-card .age-row input[type="number"] {
+  width: 4.5rem;
+}
+
+.student-card .card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.student-card .card-actions button {
+  margin-top: 0;
+  flex: 1;
+}
+
+/* The one required breakpoint: below 600px, collapse the roster from a
+   multi-column grid down to a single column. */
+@media (max-width: 600px) {
+  .roster-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Tools panel (sort/search/report) & AI Helper
+--------------------------------------------------------------------- */
+.tool-block {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--paper);
+}
+
+.tool-block h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.plain-list {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  padding-left: 1.25rem;
+}
+
+#report-output,
+.summary-output {
+  font-family: "Menlo", "Consolas", monospace;
+  font-size: 0.85rem;
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 0.75rem;
+  white-space: pre-wrap;
+}
