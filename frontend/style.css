@@ -274,3 +274,8 @@ button.delete-btn:focus-visible {
   margin-top: 0.75rem;
   white-space: pre-wrap;
 }
+
+#student-form-message {
+  min-height: 1.5em;
+  margin-top: 8px;
+}
