@@ -279,3 +279,4 @@ button.delete-btn:focus-visible {
   min-height: 1.5em;
   margin-top: 8px;
 }
+/* Keeps student form feedback area stable when messages appear. */
